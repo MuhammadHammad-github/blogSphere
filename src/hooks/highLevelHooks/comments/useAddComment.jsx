@@ -1,19 +1,19 @@
 import useFetch from "../../lowLevelHooks/useFetch";
 import { backendUrl } from "../../../utils/backendUrl";
 
-const useUpdateBlog = (blogId) => {
+const useAddComment = (blogId) => {
   const { refetch, fetching } = useFetch(
-    `${backendUrl}/api/admin/blogs/update`,
+    `${backendUrl}/api/user/comments/add`,
     "PUT",
     {
       id: blogId,
     },
     {},
-    true,
+    false,
     false
   );
-  const updateBlog = (data) => refetch(data);
-  return { updateBlog, fetching };
+  const addComment = async (data) => await refetch(data);
+  return { addComment, fetching };
 };
 
-export default useUpdateBlog;
+export default useAddComment;

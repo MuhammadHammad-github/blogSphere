@@ -1,16 +1,17 @@
 import useFetch from "../../../lowLevelHooks/useFetch";
 import { backendUrl } from "../../../../utils/backendUrl";
 
-const useCreateAccountAdmin = (data) => {
-  const { refetch } = useFetch(
+const useCreateAccountAdmin = () => {
+  const { refetch, fetching } = useFetch(
     `${backendUrl}/api/admin/auth/register`,
     "POST",
     {},
-    data,
+    {},
     true,
     false
   );
-  return { createAccount: refetch };
+  const createAccount = (data) => refetch(data);
+  return { createAccount, fetching };
 };
 
 export default useCreateAccountAdmin;

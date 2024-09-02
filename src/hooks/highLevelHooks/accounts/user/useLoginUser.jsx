@@ -3,24 +3,25 @@ import { backendUrl } from "../../../../utils/backendUrl";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const useLoginAdmin = () => {
+const useLoginUser = (data) => {
   const navigate = useNavigate();
   const { refetch, fetchedData, fetching } = useFetch(
-    `${backendUrl}/api/admin/auth/login`,
+    `${backendUrl}/api/user/auth/login`,
     "POST",
     {},
     {},
     true,
     false
   );
+
   const login = (data) => refetch(data);
   useEffect(() => {
     if (fetchedData) {
-      localStorage.setItem("authTokenAdmin", fetchedData.authToken);
-      fetchedData.authToken && navigate("/createBlog");
+      localStorage.setItem("authToken", fetchedData.authToken);
+      navigate("/");
     }
   }, [fetchedData]);
-  return { login, fetchedData, fetching };
+  return { login, fetching, fetchedData };
 };
 
-export default useLoginAdmin;
+export default useLoginUser;

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,4 +13,68 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+h1 {
+  @apply text-5xl;
+}
+h2 {
+  @apply text-4xl;
+}
+h3 {
+  @apply text-3xl;
+}
+h4 {
+  @apply text-2xl;
+}
+h5 {
+  @apply text-xl;
+}
+h6 {
+  @apply text-lg;
+}
+.respPx20 {
+  @apply px-20;
+}
+.respPx20 {
+  @apply 900px:px-20 700px:px-16 550px:px-10 400px:px-5 px-3;
+}
+.transitional {
+  @apply transition-all duration-300 ease-in-out;
+}
+.transitional:hover {
+  @apply transition-all duration-300 ease-in-out;
+}
+.resp3ColGrid {
+  @apply grid 1000px:grid-cols-3 650px:grid-cols-2 grid-cols-1;
+}
+.resp4ColGrid {
+  @apply grid 950px:grid-cols-4 750px:grid-cols-3 500px:grid-cols-2 grid-cols-1;
+}
+.btn1 {
+  @apply bg-white text-charcoal  hover:bg-transparent border-white  hover:text-white;
+}
+.btn1Alt {
+  @apply bg-charcoal text-white  hover:bg-transparent border-charcoal  hover:text-charcoal;
+}
+.btn2 {
+  @apply bg-transparent text-white border-white hover:bg-white hover:text-charcoal;
+}
+.btn {
+  @apply font-medium p-2 px-4  rounded border transition-all duration-300 ease-in-out;
+}
+/* Add this to your CSS file */
+.toolbar {
+  margin-bottom: 10px;
+}
+
+.toolbar button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.toolbar button:hover {
+  background-color: #e1e1e1;
 }

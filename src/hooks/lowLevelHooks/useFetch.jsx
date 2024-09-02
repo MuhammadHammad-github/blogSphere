@@ -5,42 +5,65 @@ const useFetch = (
   api,
   method = "GET",
   headers,
-  body = {},
+  initialBody = {},
   showAlert,
   autoCall = true
 ) => {
   const defaultHeaders = { "content-type": "application/json" };
-  const [fetchedData, setFetchedData] = useState([]);
-  const fetchData = async () => {
+  const [fetchedData, setFetchedData] = useState();
+  const [body, setBody] = useState(initialBody);
+  const [fetching, setFetching] = useState(false);
+
+  const fetchData = async (newBody = body) => {
     try {
+      setFetching(true);
+      console.log(newBody);
+      console.log(headers);
       const response = await fetch(api, {
         method,
-        headers: {
-          ...defaultHeaders,
-          ...headers,
-        },
-        ...(method !== "GET" && { body: JSON.stringify(body) }),
+        headers:
+          (method === "POST" || method === "PUT") &&
+          !(newBody instanceof FormData)
+            ? { ...defaultHeaders, ...headers }
+            : headers,
+        ...(method !== "GET" && {
+          body: newBody instanceof FormData ? newBody : JSON.stringify(newBody),
+        }),
       });
 
       const json = await response.json();
-      setFetchedData(json);
+      setFetchedData({ ...json, success: response.ok });
       showAlert &&
+        response.ok &&
         enqueueSnackbar({
           message: json.message,
-          variant: response.ok ? "success" : "error",
+          variant: "success",
+        });
+      !response.ok &&
+        enqueueSnackbar({
+          message: json.message,
+          variant: "error",
         });
     } catch (error) {
       console.log(
         "An error occurred in fetchData in useFetch hook",
         error.message
       );
+      enqueueSnackbar({
+        message: "Internal server error",
+        variant: "error",
+      });
       console.error(error);
+    } finally {
+      setFetching(false);
     }
   };
+
   useEffect(() => {
     autoCall && fetchData();
   }, []);
-  return { fetchedData, refetch: fetchData };
+
+  return { fetchedData, refetch: fetchData, setBody, fetching };
 };
 
 export default useFetch;
