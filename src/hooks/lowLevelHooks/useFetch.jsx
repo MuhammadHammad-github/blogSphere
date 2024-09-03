@@ -17,8 +17,6 @@ const useFetch = (
   const fetchData = async (newBody = body) => {
     try {
       setFetching(true);
-      console.log(newBody);
-      console.log(headers);
       const response = await fetch(api, {
         method,
         headers:

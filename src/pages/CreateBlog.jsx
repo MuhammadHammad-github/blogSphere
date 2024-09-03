@@ -21,7 +21,6 @@ const CreateBlog = () => {
       try {
         if (data) {
           data.append("description", JSON.stringify(description));
-          console.log(data.get("image"));
           createBlog(data);
           setCallSave(false);
         }
@@ -40,7 +39,7 @@ const CreateBlog = () => {
   return (
     <div className="respPx20 my-20">
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <div className="grid grid-cols-2 gap-8 my-10">
+        <div className="grid xl:grid-cols-2 grid-cols-1 gap-8 my-10">
           <div className="flex flex-col gap-3">
             <label htmlFor="title">Enter Title </label>
             <input
@@ -65,7 +64,7 @@ const CreateBlog = () => {
               required
             />
           </div>
-          <div className="flex flex-col gap-3 col-span-2">
+          <div className="flex flex-col gap-3 xl:col-span-2">
             <label htmlFor="image">Upload File</label>
             <input
               type="file"

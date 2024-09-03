@@ -12,7 +12,6 @@ const Home = () => {
   const [refetch, setRefetch] = useState(false);
   const { blogs, getBlogs, fetching } = useGetBlogs();
   useEffect(() => {
-    console.log(refetch);
     if (!refetch) return;
     getBlogs();
     setRefetch(false);

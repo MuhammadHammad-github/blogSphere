@@ -15,7 +15,6 @@ const Blog = () => {
   const [date, setDate] = useState(null);
   const { userData } = useGetUser(localStorage.getItem("authToken"));
   const { addComment, fetching } = useAddComment(blog?._id);
-  console.log(blog);
   useEffect(() => {
     if (!blog) return;
     const date = new Date(blog?.timeStamp);

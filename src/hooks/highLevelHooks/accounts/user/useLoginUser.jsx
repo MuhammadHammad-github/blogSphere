@@ -14,7 +14,7 @@ const useLoginUser = (data) => {
     false
   );
 
-  const login = (data) => refetch(data);
+  const login = async (data) => await refetch(data);
   useEffect(() => {
     if (fetchedData) {
       localStorage.setItem("authToken", fetchedData.authToken);

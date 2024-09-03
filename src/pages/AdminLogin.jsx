@@ -17,7 +17,6 @@ const AdminLogin = () => {
         data[key] = value;
       });
       await login(data);
-      console.log(fetchedData);
       e.target.reset();
     } catch (error) {
       console.log(error.message);

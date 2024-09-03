@@ -14,14 +14,14 @@ const Header = () => {
   };
   return (
     <header className="p-10 bg-charcoal text-white">
-      <div className="flex 500px:flex-row items-center flex-col gap-y-5 w-full justify-between">
+      <div className="flex 700px:flex-row items-center flex-col gap-y-5 w-full justify-between">
         <h1
           onClick={() => navigate("/")}
           className="cursor-pointer text-2xl font-bold"
         >
           BlogSphere
         </h1>
-        <div className="flex items-center gap-2">
+        <div className="flex 550px:flex-row flex-col  items-center gap-2">
           {!localStorage?.getItem("authToken") ? (
             <>
               <a
@@ -43,7 +43,7 @@ const Header = () => {
             </>
           ) : (
             <button className="btn btn1" onClick={logout}>
-              <Logout /> <span className="md:inline 500px:hidden"> Logout</span>
+              <Logout /> <span className=""> Logout</span>
             </button>
           )}
           {!localStorage?.getItem("authTokenAdmin") ? (
@@ -58,15 +58,14 @@ const Header = () => {
           ) : (
             <>
               <button className="btn btn1" onClick={logoutAsAdmin}>
-                <Logout /> <span className="md:inline hidden"> Logout</span> As
-                Admin
+                <Logout /> <span className=""> Logout</span> As Admin
               </button>
               <button
                 onClick={() => navigate("/createBlog")}
                 className="btn btn2"
               >
                 <Create className="mr-1" />
-                <span className="md:inline hidden"> Create Blog</span>
+                <span className=""> Create Blog</span>
               </button>
             </>
           )}

@@ -19,7 +19,6 @@ const EditBlog = () => {
     e.preventDefault();
     setCallSave(true);
     const formData = new FormData(e.target);
-    console.log(formData.get("image").size > 0);
     if (formData.get("image").size > 0) setData(formData);
     else {
       const data = {};
