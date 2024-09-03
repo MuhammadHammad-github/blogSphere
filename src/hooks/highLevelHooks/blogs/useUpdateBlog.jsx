@@ -12,7 +12,7 @@ const useUpdateBlog = (blogId) => {
     true,
     false
   );
-  const updateBlog = (data) => refetch(data);
+  const updateBlog = async (data) => await refetch(data);
   return { updateBlog, fetching };
 };
 

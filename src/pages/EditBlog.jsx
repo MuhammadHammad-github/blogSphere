@@ -44,12 +44,12 @@ const EditBlog = () => {
           let newData;
           if (data instanceof FormData) {
             data.append("description", JSON.stringify(description));
-            updateBlog(data);
+            await updateBlog(data);
           } else {
             newData = data;
             newData.description = JSON.stringify(description);
             delete newData.image;
-            updateBlog(newData);
+            await updateBlog(newData);
           }
           setCallSave(false);
           navigate(`/blog/${blog._id}`);
