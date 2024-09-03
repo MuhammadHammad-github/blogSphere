@@ -10,7 +10,7 @@ const useCreateAccountUser = () => {
     true,
     false
   );
-  const createAccount = (data) => refetch(data);
+  const createAccount = async (data) => await refetch(data);
   return { createAccount, fetching, fetchedData };
 };
 
