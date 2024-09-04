@@ -17,6 +17,12 @@ const useGetUser = (authToken) => {
     const token = localStorage.getItem("authToken");
     if (token) refetch();
   }, []);
+  useEffect(() => {
+    if (!fetchedData) return;
+    if (fetchedData?.action === "logout") {
+      localStorage.removeItem("authToken");
+    }
+  }, [fetchedData]);
   return { userData: fetchedData?.account, refetch, fetching };
 };
 
